@@ -10,9 +10,9 @@ const server = app.listen(port, () => {
 
 const es = new EventSource('http://live-test-scores.herokuapp.com/scores')
 
-es.onmessage = (event: any) => {
+es.addEventListener('score', (event: any) => {
   console.log(`🤖[event.data]🤖`, event.data)
-}
+})
 
 app.get('/', (_, res) => {
   res.send('Welcome to this awesome API :)')
