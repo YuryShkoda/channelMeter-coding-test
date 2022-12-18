@@ -33,3 +33,7 @@ npm run test
 ```
 
 As a result of this command, test coverage should be displayed and a `coverage` folder should be created.
+
+## Note
+
+Because data received from event source is stored in memory there is a default limit equal to `10000` items stored. If the limit is reached, data will be updated following FIFO principle. If you understand the risk and would like to adjust or disable the limit, please follow the instructions at `src/data/DataStorage.ts:12`.
