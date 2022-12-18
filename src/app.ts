@@ -9,6 +9,7 @@ import {
 import dotenv from 'dotenv'
 
 export const dataStorage = new DataStorage()
+export const studentController = new StudentController(dataStorage)
 
 dotenv.config()
 
