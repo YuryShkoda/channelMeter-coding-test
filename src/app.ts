@@ -20,6 +20,8 @@ const port = process.env.PORT || 5000
 const loggerController = new LoggerController()
 app.use(loggerController.expressLogger)
 
+setupRoutes(app)
+
 const server = app.listen(port, () => {
   const message = `⚡️ Server is running at http://localhost:${port}`
 
