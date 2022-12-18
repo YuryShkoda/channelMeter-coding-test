@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+// INFO: this SSE server is used for development purposes only
 const http = require('http')
 const os = require('os')
 
