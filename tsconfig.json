@@ -10,5 +10,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false
+  },
+  "ts-node": {
+    "files": true
   }
 }

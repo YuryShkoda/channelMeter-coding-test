@@ -1,21 +1,32 @@
-import express from 'express'
-const EventSource = require('../../eventsource/lib/eventsource.js')
+import Express from 'express'
+import { setupRoutes } from './routes/setupRoutes'
+import { DataStorage } from './data/DataStorage'
+import {
+  StudentController,
+  ExamController,
+  LoggerController
+} from './controllers'
+import dotenv from 'dotenv'
 
-const app = express()
-const port = 5000
+export const dataStorage = new DataStorage()
+
+dotenv.config()
+
+const app = Express()
+const port = process.env.PORT || 5000
+
+const loggerController = new LoggerController()
+app.use(loggerController.expressLogger)
 
 const server = app.listen(port, () => {
-  console.log(`🤖 Server is running at http://localhost:${port}`)
+  const message = `⚡️ Server is running at http://localhost:${port}`
+
+  process.logger.info(message)
+  console.log(message)
 })
 
-const es = new EventSource('http://live-test-scores.herokuapp.com/scores')
-
-es.addEventListener('score', (event: any) => {
-  console.log(`🤖[event.data]🤖`, event.data)
-})
-
-app.get('/', (_, res) => {
-  res.send('Welcome to this awesome API :)')
-})
+export const stopServer = () => {
+  server.close()
+}
 
 export default server
