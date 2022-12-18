@@ -7,7 +7,7 @@
     "build": "npx tsc && cd build && mkdir eventsource && cd .. && cp node_modules/eventsource/lib/eventsource.js build/eventsource",
     "start": "nodemon ./src/app.ts",
     "start:prod": "npm run build && NODE_ENV=production node build/src/app.js",
-    "prebuild": "npm ci",
+    "prebuild": "npm ci && rimraf build",
     "test": "jest --silent --coverage --runInBand",
     "lint": "npx prettier --check \"src/**/*.{ts,tsx,js,jsx,html,css,sass,less,yml,md,graphql}\"",
     "lint:fix": "npx prettier --write \"src/**/*.{ts,tsx,js,jsx,html,css,sass,less,yml,md,graphql}\""
@@ -29,6 +29,7 @@
     "@types/supertest": "^2.0.12",
     "jest": "^29.3.1",
     "nodemon": "^2.0.15",
+    "rimraf": "^3.0.2",
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
